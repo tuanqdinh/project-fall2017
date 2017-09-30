@@ -52,7 +52,7 @@ class GGAN:
         return np.random.uniform(-1., 1., size=[m, n])
 
     def plot(self, samples):
-        fig = plt.figure()
+        fig = plt.figure(figsize=(4, 4))
         gs = gridspec.GridSpec(4, 4)
         gs.update(wspace=0.05, hspace=0.05)
         for i, sample in enumerate(samples):
@@ -100,7 +100,7 @@ class GGAN:
                            feed_dict={self.Z: self.sample_Z(16, self.dim_z)})
                 fig = self.plot(samples)
                 plt.savefig('out/{}.png'.format(str(i).zfill(3)),
-                           bbox__hnches='tight')
+                            bbox__hnches='tight')
                 i += 1
                 plt.close(fig)
 
@@ -112,9 +112,10 @@ class GGAN:
                     feed_dict={self.Z: self.sample_Z(batch_size, self.dim_z)})
 
             if it % miniIters == 0:
-               print('Iter: {}'.format(it))
-               print('D loss: {:.4}'. format(D_loss_curr))
-               print('G_loss: {:.4}'.format(G_loss_curr))
+                print('Iter: {}'.format(it))
+                print('D loss: {:.4}'. format(D_loss_curr))
+                print('G_loss: {:.4}'.format(G_loss_curr))
+                print()
 
 # end class
 
